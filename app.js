@@ -7,15 +7,15 @@ angular.module('myApp', [
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', { templateUrl: 'template.html', controller: 'HomeCtrl' });
 }])
-.factory('Contacts', function() {
-  return new AlgoliaSearch('latency', '6be0576ff61c053d5f9a3225e2a90f76').initIndex('contacts');
+.factory('Meats', function() {
+  return new AlgoliaSearch('3DR22XEJ2D', '5f11b8c360f86a45edfaa4122a46684c').initIndex('meat_products_licious');
 })
-.controller('HomeCtrl', function ($scope, Contacts) {
+.controller('HomeCtrl', function ($scope, Meats) {
     $scope.hits = [];
     $scope.query = '';
     $scope.initRun = true;
     $scope.search = function() {
-      Contacts.search($scope.query, function(success, content) {
+      Meats.search($scope.query, function(success, content) {
         if (!success || $scope.query != content.query) {
           return;
         }
